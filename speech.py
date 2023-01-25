@@ -28,7 +28,7 @@ def generate(file_name, text):
     # Pick a "preset mode" to determine quality. Options: {"ultra_fast", "fast" (default), "standard", "high_quality"}. See docs in api.py
     preset = "standard"
     #voice = 'train_dotrice'
-    voice = 'bedtimestory1'
+    voice = 'bedtimestory2'
 
     # Load it and send it through Tortoise.
     voice_samples, conditioning_latents = load_voice(voice)
