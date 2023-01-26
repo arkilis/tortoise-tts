@@ -23,17 +23,17 @@ if not useCPU:
 
 tts = TextToSpeech(device=DEVICE)
 
+# Pick a "preset mode" to determine quality. Options: {"ultra_fast", "fast" (default), "standard", "high_quality"}. See docs in api.py
+preset = "standard"
+#voice = 'train_dotrice'
+voice = 'bedtimestory2'
+
+# Load it and send it through Tortoise.
+voice_samples, conditioning_latents = load_voice(voice)
+
 
 def generate(file_name, text):
-    # Pick a "preset mode" to determine quality. Options: {"ultra_fast", "fast" (default), "standard", "high_quality"}. See docs in api.py
-    preset = "standard"
-    #voice = 'train_dotrice'
-    voice = 'bedtimestory2'
-
-    # Load it and send it through Tortoise.
-    voice_samples, conditioning_latents = load_voice(voice)
-    gen = tts.tts_with_preset(text, voice_samples=voice_samples, conditioning_latents=conditioning_latents, 
-                            preset=preset)
+    gen = tts.tts_with_preset(text, voice_samples=voice_samples, conditioning_latents=conditioning_latents, preset=preset)
     torchaudio.save(file_name, gen.squeeze(0).cpu(), 24000)
     print("--- {} seconds: {} ---".format("%0.2f" % (time.time() - start_time), file_name))
 
