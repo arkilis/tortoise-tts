@@ -1,3 +1,4 @@
+#!/c/Users/Ben/anaconda3/envs/tortoise-tts/python
 import uuid
 import os
 import time
@@ -26,7 +27,7 @@ tts = TextToSpeech(device=DEVICE)
 # Pick a "preset mode" to determine quality. Options: {"ultra_fast", "fast" (default), "standard", "high_quality"}. See docs in api.py
 preset = "standard"
 #voice = 'train_dotrice'
-voice = 'bedtimestory2'
+voice = 'bedtimestory1'
 
 # Load it and send it through Tortoise.
 voice_samples, conditioning_latents = load_voice(voice)
